@@ -1,0 +1,38 @@
+#articleTitle {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: #505050;
+     line-height: 30px;
+    word-break: normal;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    /* display: -webkit-box; */
+    -webkit-box-orient: vertical;
+    /* -webkit-line-clamp: 2; */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.topNavigation{
+    width:100%;
+}
+.Left {
+    margin-left: 0%;
+}
+.matter-foot {
+    height: 30px;
+}
+.checkSpan {
+    float: none;
+}
+.articleContent{
+    margin: 0;
+}
+.matterContent{
+    font-size: 14px;
+    line-height: 30px;
+    text-indent: 28px;
+
+}

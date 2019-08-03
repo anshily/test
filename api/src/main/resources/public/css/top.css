@@ -1,0 +1,38 @@
+#toTopBox{
+    background-color: #30353B;
+    position: fixed;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    bottom: 3rem;
+    right: 3rem;
+    text-align: center;
+    font-size: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.innerBox{
+    text-align: center;
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    /*vertical-align: middle;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.xsImg{
+    width: 60%;
+    height: 50%;
+}
+.top{
+    margin: 0;
+    height: 50%;
+    font-size: 18px;
+    font-weight: 200;
+}

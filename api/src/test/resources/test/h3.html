@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a target="frame" href="h1.html">frame1</a>
+<a target="frame" id="h2" href="h2.html">frame2</a>
+
+<iframe name="frame" class="frame">
+
+</iframe>
+
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        // console.log(" current is h3 ")
+        // console.log("i will click #h2")
+        // console.log($("#h2"))
+        console.log(location.hash)
+        // if (location.hash === myRele)
+        document.getElementById("h2").click();
+        // $("#h2").trigger("click");
+        // (function () {
+        //     console.log("i clicked")
+        // });
+    })
+    // $(document).ready(function(e) {
+    //     var counter = 0;
+    //     if (window.history && window.history.pushState) {
+    //         $(window).on('popstate', function () {
+    //             // window.history.pushState('forward', null, 'h1.html');
+    //
+    //
+    //             console.log(" current is h3 ")
+    //             // window.location = "h3.html#h2"
+    //
+    //             // console.log(window.location);
+    //             // console.log(location.hash)
+    //             // window.history.forward(1);
+    //             // alert("不可回退");
+    //         });
+    //     }
+    //
+    //     window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+    //     window.history.forward(1);
+    // });
+</script>

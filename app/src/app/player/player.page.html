@@ -1,0 +1,96 @@
+<!--<ion-header>-->
+  <!--<ion-toolbar>-->
+    <!--<ion-title>player</ion-title>-->
+  <!--</ion-toolbar>-->
+<!--</ion-header>-->
+
+<ion-content>
+  <div style="position: fixed;top: 1rem;z-index: 99">
+    <div style="display: flex;justify-content: flex-end;width: 100vw;">
+      <ion-icon name="close" style="color: white;font-size: 1.5rem;margin: 1rem" (click)="dismiss()" ></ion-icon>
+      <!--<button (click)="dismiss()" style="width: 2rem;height: 2rem;">x</button>-->
+    </div>
+  </div>
+
+  <ion-slides pager="true" [options]="slideOpts" style="height: 100vh" (ionSlideNextEnd)="sldnxt($event)" (ionSlidePrevEnd)="sldpre($event)">
+
+    <!--<ion-slide>-->
+      <!--<vg-player *ngIf="cur == 1">-->
+        <!--<vg-overlay-play></vg-overlay-play>-->
+        <!--<vg-buffering></vg-buffering>-->
+        <!--<video #media  [vgMedia]="media" src="{{src}}" autoplay></video>-->
+      <!--</vg-player>-->
+    <!--</ion-slide>-->
+
+    <ion-slide *ngFor="let item of sourceArr">
+
+      <div *ngIf="cur == item.id">
+        <div style="width: 100vw;height: 100vh;">
+          <vg-player (onPlayerReady)="onPlayerReady($event)" >
+            <vg-overlay-play></vg-overlay-play>
+            <vg-buffering></vg-buffering>
+            <!--<vg-controls [vgAutohide]="true" [vgAutohideTime]="5">-->
+            <!--<vg-play-pause></vg-play-pause>-->
+            <!--<vg-time-display [vgProperty]="'current'"></vg-time-display>-->
+            <!--<vg-scrub-bar>-->
+            <!--<vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>-->
+            <!--<vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>-->
+            <!--</vg-scrub-bar>-->
+            <!--<vg-time-display [vgProperty]="'total'"></vg-time-display>-->
+            <!--<vg-fullscreen></vg-fullscreen>-->
+            <!--</vg-controls>-->
+            <video #media (play)="tplay()" [vgMedia]="media" src="{{storageBaseUrl + item.src}}" poster="{{storageBaseUrl + item.poster}}" autoplay></video>
+          </vg-player>
+        </div>
+
+        <div style="position: absolute;z-index: 999;top: 25rem;right: 0">
+          <div style="display: flex;flex-direction: column;margin-right: 1rem">
+            <div>
+              <ion-icon *ngIf="like" name="heart" style="font-size: 3rem;color: red" (click)="isLike(item)"></ion-icon>
+              <ion-icon *ngIf="!like" name="heart" style="font-size: 3rem;color: white" (click)="isLike(item)"></ion-icon>
+            </div>
+
+            <div style="margin-top: 0.5rem;">
+              <ion-icon name="quote" style="font-size: 3rem;color: white" (click)="showComment(item)"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+
+  <div *ngIf="isComment" style="position: absolute;bottom: 0;z-index: 300;height: 75vh;width: 100vw;background-color:#fff;transition: height 2s linear 0">
+    <!--<button (click)="hiddenComment()">x</button>-->
+    <div style="width: 100vw;display: flex;justify-content: flex-end">
+      <ion-icon name="close" style="color: black;font-size: 1.5rem;margin: 1rem" (click)="hiddenComment()" ></ion-icon>
+    </div>
+    <ion-item>
+      <!--<ion-label position="floating">评论</ion-label>-->
+      <ion-input  type="text" [(ngModel)]="commentContext" name="commentContext" [placeholder]="'写下你的评论吧'"></ion-input>
+      <ion-button shape="round" (click)="sendComment()">发布</ion-button>
+    </ion-item>
+    <ion-list *ngIf="commentList" style="height: 60vh;overflow: scroll">
+      <ion-item *ngFor="let comment of commentList">
+        <!--<ion-avatar>-->
+          <!--<img src="{{(comment['user_profile']['avatar'] && comment['user_profile']['avatar'] == 'default.jpg' ? 'assets/shapes.svg' : storageBaseUrl + comment['user_profile']['avatar'])}}">-->
+        <!--</ion-avatar>-->
+        <!--<ion-text style="margin: 0.5rem" (click)="goUserProfile(comment['user_id'])">{{comment['user_profile']['name']}}：</ion-text>-->
+        <!--<ion-text style="color: #0cd1e8">{{comment['content']}}</ion-text>-->
+
+        <div>
+          <div (click)="goUserProfile(comment['user_id'])" style="display: flex">
+            <!--<ion-avatar>-->
+            <img style="width: 2rem;height: 2rem;object-fit: cover;border-radius: 50%"
+                 src="{{(comment['user_profile']['avatar'] && comment['user_profile']['avatar'] == 'default.jpg' ? 'assets/shapes.svg' : storageBaseUrl + comment['user_profile']['avatar'])}}">
+            <!--</ion-avatar>-->
+            <ion-text style="margin: 0.5rem;color: gray">{{comment['user_profile']['name']}}：</ion-text>
+          </div>
+
+          <ion-text style="color: black">{{comment['content']}}</ion-text>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

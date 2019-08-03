@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>编辑资料</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 1rem">
+
+    <!--<div style="width: 100%; text-align: center;margin:1.5rem 0 4.5rem;">-->
+    <!--<img src="assets/shapes.svg" alt="" style="height: 6rem">-->
+    <!--</div>-->
+
+    <div>
+
+      <ion-item>
+        <ion-label position="floating">用户名</ion-label>
+        <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>预览图</ion-label>
+        <img *ngIf="!imageSource" style="object-fit: cover;width: 8rem;height: 10rem" src="assets/shapes.svg">
+        <div *ngIf="imageSource">
+          <img style="object-fit: cover;width: 8rem;height: 10rem"
+               src="{{baseUrl + imageSource}}" alt="">
+        </div>
+      </ion-item>
+
+      <ion-button (click)="selectPictrue()">
+        选择头像
+        <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+      </ion-button>
+
+      <ion-item>
+        <ion-label position="floating">邮箱</ion-label>
+        <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">个性签名</ion-label>
+        <ion-input type="text" [(ngModel)]="signature" name="signature"></ion-input>
+      </ion-item>
+
+
+      <ion-button style="margin-top: 2rem;" expand="block" (click)="saveProfile()">保存</ion-button>
+
+
+    </div>
+  </div>
+</ion-content>

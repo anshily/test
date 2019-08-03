@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../public/js/share/share.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../public/js/qrcode.min.js"></script>
+    <style>
+        #qrcode{
+            position: absolute;
+            /* left: 36%; */
+            /* top: 30%; */
+            width: 210px;
+            height: 155px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            box-shadow: 5px 5px 66px -5px;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <!--<script type="text/javascript" src="../../public/js/share/jquery.share.min.js"></script>-->
+</head>
+<body>
+
+<div id="showCode">555555</div>
+<!--<div id="share-2" class="share-component social-share"></div>-->
+<!--<div class="iconqq"></div>-->
+<!--<div class="share-component social-share">-->
+    <!--&lt;!&ndash;<a class="social-share-icon icon-qzone" href=""></a>&ndash;&gt;-->
+    <!--<a class="social-share-icon icon-qq" href="" onclick="shareToQq('安石的分享','zixingly.github.io','测试啦')"></a>-->
+    <!--<a class="social-share-icon icon-weibo" href=""-->
+       <!--onclick="shareToXl('安石的分享','zixingly.github.io','../../public/images/logo1.jpg')"></a>-->
+    <!--<a class="social-share-icon icon-wechat" href="" onclick="createQrCode('zixingly.github.io')"></a>-->
+    <!--&lt;!&ndash;<div id="shareToWx"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div id="shareToWx" style="width:100px; height:100px; margin-top:15px;"></div>&ndash;&gt;-->
+    <!--<div id="qrcode" ></div>-->
+<!--</div>-->
+<a class="social-share-icon icon-qq" href="" onclick="shareToQq('',articleUrl,'')"></a>
+</body>
+</html>
+<script type="text/javascript">
+
+
+    // var qrcode;
+    shareBox = $("<div class=\"share-component social-share\">\n" +
+        "    <!--<a class=\"social-share-icon icon-qzone\" href=\"\"></a>-->\n" +
+        "    <a class=\"social-share-icon icon-qq\" href=\"\" onclick=\"shareToQq('安石的分享','zixingly.github.io','测试啦')\"></a>\n" +
+        "    <a class=\"social-share-icon icon-weibo\" href=\"\"\n" +
+        "       onclick=\"shareToXl('安石的分享','zixingly.github.io','../../public/images/logo1.jpg')\"></a>\n" +
+        "    <a class=\"social-share-icon icon-wechat\" href=\"\" onclick=\"createQrCode('zixingly.github.io')\"></a>\n" +
+        "    <!--<div id=\"shareToWx\"></div>-->\n" +
+        "    <!--<div id=\"shareToWx\" style=\"width:100px; height:100px; margin-top:15px;\"></div>-->\n" +
+        // "    <div id=\"qrcode\" ></div>\n" +
+        "</div>")
+
+    qrBox = $("<div id='qrcode'></div>")
+
+    $("body").append(qrBox)
+    qrcode = new QRCode(document.getElementById("qrcode"),{
+        text: window.location,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });  // 设置要生成二维码的链接
+
+    $("#showCode").hover(function () {
+        $("#showCode").append(shareBox);
+
+        $(".icon-wechat").hover(function () {
+            qrcode.makeCode(window.location);
+            $("#qrcode").show()
+        },function () {
+            qrcode.clear(); // 清除代码
+            $("#qrcode").hide()
+        })
+    },function () {
+        // qrcode.clear();
+        shareBox.remove();
+        // $("#showCode").removeChild(shareBox)
+    })
+
+
+    function shareToXl(title, url, picurl) {
+        var sharesinastring = 'http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + url + '&content=utf-8&sourceUrl=' + url;//+'&pic='+picurl;
+        window.open(sharesinastring, 'newwindow');
+    }
+
+    function shareToQq(title, url, desc) {
+        // var shareString = 'http://connect.qq.com/widget/shareqq/index.html?url=你的分享网址&sharesource=qzone&title=你的分享标题&pics=你的分享图片地址&summary=你的分享描述&desc=你的分享简述';
+        var shareString = "http://connect.qq.com/widget/shareqq/index.html?url=" + url + "&sharesource=qzone&title=" + title + "&pics=你的分享图片地址&summary=来自7财经的分享&desc=" + desc;
+        window.open(shareString, 'newwindow');
+    }
+
+    // (function(){
+    //     var p = {
+    //         url:location.href, /*获取URL，可加上来自分享到QQ标识，方便统计*/
+    //         title:'title', /*分享标题(可选)*/
+    //         summary:'summary', /*分享摘要(可选)*/
+    //         pics:'logo.png', /*分享图片(可选)*/
+    //         site:'site', /*分享来源(可选) 如：QQ分享*/
+    //         style:'101',width:96,height:24};
+    //     var s = [];
+    //     for(var i in p){
+    //         s.push(i + '=' + encodeURIComponent(p[i]||''));
+    //     }
+    //     document.write([
+    //         '<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?',
+    //         s.join('&'),
+    //         '" target="_blank">分享到QQ</a>'
+    //     ].join(''));})();
+
+    // http://service.weibo.com/share/share.php?url=
+    //
+    //     count=表示是否显示当前页面被分享数量(1显示)(可选，允许为空)
+    // &url=将页面地址转成短域名，并显示在内容文字后面。(可选，允许为空)
+    // &appkey=用于发布微博的来源显示，为空则分享的内容来源会显示来自互联网。(可选，允许为空)
+    // &title=分享时所示的文字内容，为空则自动抓取分享页面的title值(可选，允许为空)
+    // &pic=自定义图片地址，作为微博配图(可选，允许为空)
+    // &ralateUid=转发时会@相关的微博账号(可选，允许为空)
+    // &language=语言设置(zh_cn|zh_tw)(可选)
+
+
+    // $('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+
+
+        // var qrcode = new QRCode(document.getElementById("qrcode"), {
+        //     width : 100,
+        //     height : 100
+        // });
+    // var qrcode =
+    //     new QRCode($("#shareToWx")[0], {
+    //         text: "zixingly.github.io",
+    //         width: 150,
+    //         height: 150,
+    //         colorDark: "#000000",
+    //         colorLight: "#ffffff",
+    //         typeNumber: 4,
+    //         correctLevel: QRCode.CorrectLevel.H
+    //     });
+//     var qrcode;
+//     function createQrCode(text) {
+//
+//          qrcode =
+//             new QRCode($("#shareToWx")[0], {
+//             text: "zixingly.github.io",
+//             width: 150,
+//             height: 150,
+//             colorDark: "#000000",
+//             colorLight: "#ffffff",
+//             typeNumber: 4,
+//             correctLevel: QRCode.CorrectLevel.H
+//         });
+//
+//         // qrcode.makeCode(text);
+//     }
+//
+//     $(".icon-wechat").hover(function () {
+// qrcode.makeCode("zixingly.github.io");
+//     })
+//     var qrcode = new QRCode(document.getElementById("qrcode"),{
+//         // text: window.location,
+//         width: 128,
+//         height: 128,
+//         colorDark : "#000000",
+//         colorLight : "#ffffff",
+//         correctLevel : QRCode.CorrectLevel.H
+//     });  // 设置要生成二维码的链接
+</script>
+<script type="text/javascript">
+
+</script>

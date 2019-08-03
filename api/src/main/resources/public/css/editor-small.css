@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.topNavigation{
+    width:100% !important;
+}
+*{
+    font-size: 10px;
+}
+.main{
+    width: 100%;
+}
+.articleTitle{
+    font-size: 12px;
+    letter-spacing: 0;
+    margin-left: 15px;
+    width: 60px;
+}
+.editorColum input.labelInput{
+    font-size: 10px;
+    width: calc(100% - 100px);
+}
+#typeSelect{
+    width: calc(100% - 100px);
+}
+.editorColum li.keywordInput{
+    margin-right: 10px;
+}
+.editorCoverColum{
+
+    margin-bottom: 10px;
+}
+.writeArticle span{
+    font-size:14px !important;
+}
+.imgView{
+    width: 100px;
+    height: 100px;
+}
+.buttonBox{
+    width: 20%;
+}
+.tipBox{
+    margin-left: 80px;
+    font-size: 10px;
+}
+.RichEditorColum{
+    margin-top: 10px;
+}
+.RichEditorColum div.RichEditor{
+    width: 100%;
+}
+.specialSpan{
+    display: none;
+}
+.commit{
+    margin-left: 15%;
+}
+.authorColum{
+    height: 125px;
+    margin-top: 30px;
+}
+.authorbox{
+    margin-top: 20px;
+}

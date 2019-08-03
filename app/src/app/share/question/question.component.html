@@ -1,0 +1,25 @@
+<div style="width: 100vw;display: flex;flex-direction: column">
+  <ion-card *ngIf="question && question['question_type_id'] == 2">
+    <ion-card-header>多选* {{question['question_title']}}</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let entry of answers">
+          <ion-label>{{entry.name}}</ion-label>
+          <ion-checkbox (ionChange)="checkChange()" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="question && question['question_type_id'] == 1">
+    <ion-card-header *ngIf="question">单选*{{question['question_title']}}</ion-card-header>
+    <ion-radio-group>
+      <ion-list>
+        <ion-item *ngFor="let entry of answers">
+          <ion-label>{{entry.name}}</ion-label>
+          <ion-radio slot="start" value="{{entry.index_number}}"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-radio-group>
+  </ion-card>
+</div>

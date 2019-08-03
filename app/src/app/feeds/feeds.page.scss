@@ -1,0 +1,21 @@
+.mint-button:after {
+  background-color: #000;
+  content: " ";
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+ .bottom-button {
+  width: 45%;
+  background: #4baaf4;
+  border-radius: 1.4rem;
+  font-size: 1rem;
+  color: #fff;
+}
+.mint-button--normal, .mint-button--small {
+  display: inline-block;
+  padding: 0 12px;
+}

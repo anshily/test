@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.anshily.dao.AnswerMapper">
+  <resultMap id="BaseResultMap" type="io.anshily.model.Answer">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="question_item_id" jdbcType="INTEGER" property="question_item_id" />
+    <result column="question_bank_id" jdbcType="INTEGER" property="question_bank_id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="index_letter" jdbcType="VARCHAR" property="index_letter" />
+  </resultMap>
+</mapper>

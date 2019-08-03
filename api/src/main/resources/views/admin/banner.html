@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .topNavigation {
+            display: flex;
+            flex-direction: row;
+            font-size: 14px;
+            align-items: center;
+            height: 4rem;
+            background-color: #2C323E;
+        }
+        .login-register{
+            font-size: 14px;
+            display: flex;
+            position: absolute;
+            right: 8rem;
+            color: white;
+        }
+        .login-register span{
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        .logo{
+            margin-left: 3rem;
+            margin-top: 10px;
+            height: 3rem;
+            object-fit: contain;
+        }
+
+        .author{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: absolute;
+            right: 3rem;
+            color: white;
+        }
+        .authorHeader img{
+            border-radius: 50%;
+            height: 2rem;
+            object-fit: contain;
+        }
+        .writeArticle span{
+            margin-right: 15px;
+            padding: 1px 5px;
+            border: white solid 2px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<!--<div class="topNavigation">-->
+    <!--<div><a href="/index"><img class="logo" src="../../public/imgs/keniu.png" alt=""></a></div>-->
+    <!--<div class="author" id="authorBox" style="display: none">-->
+        <!--<div class="writeArticle"><span>发布内容</span></div>-->
+        <!--<div class="authorHeader"><a href=""><img id="authorImg" src="../../public/imgs/user.png" alt=""></a></div>-->
+    <!--</div>-->
+    <!--<div class="login-register" id="authorLR">-->
+        <!--<span>登录</span> |-->
+        <!--<span>注册</span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<input type="text" id="aid">
+<input type="submit" id="submit">
+
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $.ajax({
+        type: "get",
+        url: "/liker/clickLike",
+        success: function(result) {
+            if (result.code === 0){
+                console.log(result);
+                if (result.data === "unLogin") {
+                    $("#authorBox").hide();
+                    $("#authorLR").show();
+                }else {
+                    $("#authorBox").show();
+                    $("#authorImg").src = result.data.header;
+                    $("#authorLR").hide();
+                }
+            }
+        }
+    })
+</script>

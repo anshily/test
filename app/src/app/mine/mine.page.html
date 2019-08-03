@@ -1,0 +1,250 @@
+<ion-menu side="end" menuId="second">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>设置</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <!--登录 注册 首页-->
+            <!--<ion-item>-->
+            <ion-button expand="full" fill="clear" [routerLink]="['/home']">首页</ion-button>
+
+            <!--<ion-button expand="full" fill="clear" [routerLink]="['/welcome']">欢迎页</ion-button>-->
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+            <ion-button expand="full" fill="solid" [routerLink]="['/login']">登录</ion-button>
+            <!--</ion-item>-->
+            <!--<ion-item>-->
+            <ion-button expand="block" fill="outline" [routerLink]="['/register']">注册</ion-button>
+
+            <ion-button expand="full" fill="clear" (click)="logout()">退出登录</ion-button>
+            <!--</ion-item>-->
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-router-outlet main>
+
+    <ion-content>
+
+        <div style="position: fixed; top: 2rem; right: 1rem; z-index: 999">
+            <ion-icon style="font-size: 2rem;color: white" name="menu" (click)="openSecond()"></ion-icon>
+        </div>
+
+        <div>
+
+            <!--<div>-->
+            <img *ngIf="!userProfile" src="assets/user_background.png" alt="" style="width: 100vw;height: 25vh;object-fit: cover" (click)="goEditBackground()">
+            <img *ngIf="imgError" src="assets/user_background.png" alt="" style="width: 100vw;height: 25vh;object-fit: cover" (click)="goEditBackground()">
+            <img *ngIf="userProfile"
+                 src="{{(userProfile['background_image'] && userProfile['background_image'] == 'default.jpg') ? 'assets/user_background.png' : storageBaseUrl+ userProfile['background_image']}}"
+                 alt="" style="width: 100vw;height: 25vh;object-fit: cover" (click)="goEditBackground()" (error)="showDefaultSrc()">
+            <!--</div>-->
+            <div>
+
+
+                <ion-card>
+                    <div>
+                        <div style="display: flex;flex-direction: column">
+
+                            <div style="display: flex; flex-direction: row;align-items: center">
+                                <div style="margin-right: 1rem;margin-left: 1rem; display: flex; align-items: center">
+                                    <img *ngIf="!userProfile" src="assets/shapes.svg" alt=""
+                                         style="width: 5rem;height: 5rem;border-radius: 50%;object-fit: cover">
+
+                                    <img *ngIf="userProfile"
+                                         src="{{(userProfile['avatar'] && userProfile['avatar'] == 'default.jpg') ? 'assets/shapes.svg' : storageBaseUrl+ userProfile['avatar']}}"
+                                         alt=""
+                                         style="width: 5rem;height: 5rem;border-radius: 50%;object-fit: cover">
+                                    <ion-text style="font-size: 2rem;color: black;opacity: 0.9;margin-left: 1rem"
+                                              *ngIf="userProfile">{{userProfile['name']}}
+                                    </ion-text>
+                                    <ion-button (click)="editUserProfile()" expand="block" fill="outline"
+                                                style="margin-left: 3rem">编辑资料
+                                    </ion-button>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row;align-items: center">
+                                <div style="color: grey; margin-left: 1.5rem;margin-top: 1rem;margin-bottom: 1rem">
+                                    <div style="margin: 0.5rem">邮箱</div>
+                                    <ion-text style="margin: 0.5rem" *ngIf="userProfile">{{userProfile['email']}}</ion-text>
+                                </div>
+
+                                <div style="color: grey; margin-left: 1.5rem; margin-bottom: 1rem">
+                                    <div style="margin: 0.5rem">签名</div>
+                                    <ion-text style="margin: 0.5rem" *ngIf="(userProfile && !userProfile['signature'])">您还没有个性签名赶快去编辑资料吧！</ion-text>
+                                    <ion-text style="margin: 0.5rem" *ngIf="userProfile && userProfile['signature']">{{userProfile['signature']}}</ion-text>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </ion-card>
+                <div>
+
+                    <!-- Segment with secondary color -->
+                    <ion-segment (ionChange)="segmentChanged($event)" color="secondary">
+                        <ion-segment-button value="publish" checked>
+                            <ion-label>我的发布</ion-label>
+                        </ion-segment-button>
+                        <ion-segment-button value="fans">
+                            <ion-label>粉丝</ion-label>
+                        </ion-segment-button>
+                        <ion-segment-button value="following">
+                            <ion-label>关注的人</ion-label>
+                        </ion-segment-button>
+                    </ion-segment>
+
+                </div>
+
+
+                <div *ngIf="segmentValue == 'publish'">
+                    <!--<ion-virtual-scroll [items]="feedArr" approxItemHeight="50px" style="height: 600px">-->
+                    <!--<ion-item *virtualItem="let item" style="height: 100px">-->
+                    <!--&lt;!&ndash;<ion-text (click)="getCurPlayer(item)"> {{ item }} </ion-text>&ndash;&gt;-->
+                    <!--<ion-img [src]="'http://tiktok.tiantianquan.xyz/storage' + item.poster"></ion-img>-->
+                    <!--</ion-item>-->
+                    <!--</ion-virtual-scroll>-->
+
+                    <div style="width: 100vw;display: flex;flex-wrap: wrap;justify-content: space-between">
+                        <div *ngFor="let item of feedArr" (click)="getCurPlayer(item)">
+                            <!--<div style="width: 33vw">-->
+                                <!--&lt;!&ndash;<div style="width: 100%; position: absolute;padding: 0.5rem;background-color:grey;opacity: 0.5">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<ion-text style="color: white;">{{item.title}}</ion-text>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--<img style="width: 8rem;height: 10rem;object-fit: cover;"-->
+                                     <!--src="{{storageBaseUrl + item.poster}}"-->
+                                     <!--alt="">-->
+                            <!--</div>-->
+
+                            <div style="width: 33vw; display: flex;justify-content: center;align-items: center">
+
+                                <img style="width: 32vw;height: 22vh;object-fit: cover;margin-bottom: 1vw"
+                                     src="{{storageBaseUrl + item.poster}}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="feedArr && feedArr.length == 0"
+                         style="display: flex;justify-content: center;margin: 1rem">
+                        <ion-text>暂无更多内容...</ion-text>
+                    </div>
+
+                </div>
+
+                <div *ngIf="segmentValue == 'fans'">
+
+                    <ion-item *ngFor="let item of followerArr">
+
+                        <ion-avatar>
+                            <img src="{{( item.avatar && item.avatar == 'default.jpg') ? 'assets/shapes.svg' : storageBaseUrl+ item.avatar}}">
+                        </ion-avatar>
+
+                        <!--<ion-img style="width: 3rem;height: 3rem;border-radius: 50%;object-fit: cover" [src]=""></ion-img>-->
+                        <ion-text style="margin: 1rem;" (click)="goUserProfile(item['follower_id'])"> {{ item['name'] }}
+                        </ion-text>
+
+                        <ion-icon name="arrow-dropright" style="margin-left: 10rem;"></ion-icon>
+
+                    </ion-item>
+                    <!--<ion-virtual-scroll [items]="followerArr" approxItemHeight="50px" style="height: 600px">-->
+
+                    <!--<ion-card *virtualItem="let item" style="height: 4rem">-->
+                    <!--<ion-item>-->
+
+                    <!--<ion-avatar>-->
+                    <!--<img src="{{( item.avatar && item.avatar == 'default.jpg') ? 'assets/shapes.svg' : storageBaseUrl+ item.avatar}}">-->
+                    <!--</ion-avatar>-->
+
+                    <!--&lt;!&ndash;<ion-img style="width: 3rem;height: 3rem;border-radius: 50%;object-fit: cover" [src]=""></ion-img>&ndash;&gt;-->
+                    <!--<ion-text style="margin: 1rem;" (click)="goUserProfile(item)"> {{ item['name'] }}-->
+                    <!--</ion-text>-->
+
+                    <!--<ion-icon name="arrow-dropright" style="margin-left: 10rem;"></ion-icon>-->
+
+                    <!--</ion-item>-->
+                    <!--</ion-card>-->
+
+                    <!--</ion-virtual-scroll>-->
+
+                    <div *ngIf="followerArr && followerArr.length == 0"
+                         style="display: flex;justify-content: center;margin: 1rem">
+                        <ion-text>暂无更多内容...</ion-text>
+                    </div>
+
+                </div>
+
+
+                <div *ngIf="segmentValue == 'following'">
+
+                    <ion-list>
+                        <ion-item *ngFor="let item of followingArr">
+
+                            <ion-avatar>
+                                <img src="{{( item.avatar && item.avatar == 'default.jpg') ? 'assets/shapes.svg' : storageBaseUrl+ item.avatar}}">
+                            </ion-avatar>
+                            <ion-text style="margin: 1rem" (click)="goUserProfile(item['user_id'])"> {{ item['name'] }}
+                            </ion-text>
+
+                            <ion-icon name="arrow-dropright" style="margin-left: 10rem;"></ion-icon>
+
+                        </ion-item>
+                    </ion-list>
+                    <!--<ion-virtual-scroll [items]="followingArr" approxItemHeight="50px" style="height: 600px">-->
+
+                    <!--<ion-card *virtualItem="let item" style="height: 6rem">-->
+                    <!--<ion-item>-->
+
+                    <!--<ion-avatar>-->
+                    <!--<img src="{{( item.avatar && item.avatar == 'default.jpg') ? 'assets/shapes.svg' : storageBaseUrl+ item.avatar}}">-->
+                    <!--</ion-avatar>-->
+                    <!--<ion-text style="margin: 1rem" (click)="goUserProfile(item)"> {{ item['name'] }}-->
+                    <!--</ion-text>-->
+
+                    <!--<ion-icon name="arrow-dropright" style="margin-left: 10rem;"></ion-icon>-->
+
+                    <!--</ion-item>-->
+                    <!--</ion-card>-->
+
+                    <!--</ion-virtual-scroll>-->
+
+                    <div *ngIf="followingArr && followingArr.length == 0"
+                         style="display: flex;justify-content: center; margin: 1rem">
+                        <ion-text>暂无更多内容...</ion-text>
+                    </div>
+                </div>
+
+
+                <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content
+                            loadingSpinner="bubbles"
+                            loadingText="加载更多内容...">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+
+            </div>
+        </div>
+
+
+        <div style="position: fixed; bottom: 0;z-index: 99">
+
+            <div style="display: flex;justify-content: space-around;align-items: center; width: 100vw;background-color:black;opacity: 0.8;">
+
+                <div (click)="goIndex()" style="color: white">首页</div>
+
+                <ion-icon name="add-circle-outline" (click)="goPublish()"
+                          style="color: white;font-size: 3rem;"></ion-icon>
+
+                <div (click)="goMine()" style="color: white">我的</div>
+
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-router-outlet>

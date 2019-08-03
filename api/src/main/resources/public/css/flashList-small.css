@@ -1,0 +1,18 @@
+.Left{
+    margin-left: 0;
+    width: 100%;
+    margin-right: 0;
+}
+.matter{
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+.Right{
+    display: none;
+}
+.topNavigation {
+    /*max-width: 1500px;*/
+    width: 100%;
+}

@@ -1,0 +1,92 @@
+<ion-header>
+    <!--<ion-toolbar>-->
+    <!--<ion-title>no-support</ion-title>-->
+    <!--</ion-toolbar>-->
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-icon name="arrow-back" style="font-size: 2rem"></ion-icon>
+        </ion-buttons>
+        <!--<ion-buttons slot="secondary">-->
+        <!--<ion-button>-->
+        <!--&lt;!&ndash;<ion-icon slot="icon-only" name="star"></ion-icon>&ndash;&gt;-->
+        <!--<img src="assets/icon/search-dark.png" alt="" style="width: 2rem;height: 2rem" (click)="goSearch()">-->
+        <!--</ion-button>-->
+        <!--</ion-buttons>-->
+        <ion-title>B 类考试</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <app-question (updateResult)="updateResult($event)" [questionId]="'45380'"></app-question>
+
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start">
+            <ion-button (click)="checkResult()">
+                查看解析
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="secondary">
+            <ion-button>
+                题库
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+
+    <div style="width: 100vw;display: flex;flex-direction: column">
+        <ion-card *ngIf="question && question['question_type_id'] == 2">
+            <ion-card-header>多选* {{question['question_title']}}</ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item *ngFor="let entry of answers">
+                        <ion-label>{{entry.name}}</ion-label>
+                        <ion-checkbox (ionChange)="checkChange()" slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="question && question['question_type_id'] == 1">
+            <ion-card-header *ngIf="question">单选*{{question['question_title']}}</ion-card-header>
+            <ion-radio-group>
+                <ion-list>
+                    <ion-item *ngFor="let entry of answers">
+                        <ion-label>{{entry.name}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.index_number}}"></ion-radio>
+                    </ion-item>
+                </ion-list>
+            </ion-radio-group>
+        </ion-card>
+
+        <ion-card *ngIf="showResult">
+            <ion-card-header>{{isRight ? '正确' : '错误'}}</ion-card-header>
+            <ion-list>
+                <ion-item>你的答案：{{userResult}}</ion-item>
+                <ion-item>正确答案：{{rightResult}}</ion-item>
+                <ion-item *ngIf="question">{{question['explanation']}}</ion-item>
+            </ion-list>
+        </ion-card>
+    </div>
+
+    <div style="position: fixed; bottom: 0;z-index: 99">
+
+        <div style="display: flex;justify-content: space-around;align-items: center; width: 100vw;">
+
+            <ion-button shape="round">上一题</ion-button>
+
+            <ion-button shape="round">下一题</ion-button>
+
+            <!--<button class="bottom-button mint-button mint-button&#45;&#45;normal">-->
+            <!--<label class="mint-button-text">上一题</label>-->
+            <!--</button>-->
+
+            <!--<button class="bottom-button mint-button mint-button&#45;&#45;normal">-->
+            <!--<label class="mint-button-text">下一题</label>-->
+            <!--</button>-->
+
+        </div>
+
+    </div>
+</ion-content>

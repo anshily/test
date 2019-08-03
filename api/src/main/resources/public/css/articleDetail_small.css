@@ -1,0 +1,58 @@
+/*.articleContent{*/
+    /*width: 100%;*/
+/*}*/
+h2{
+    font-weight: 400;
+}
+.logo{
+    height: 2rem !important;
+}
+.Left{
+    margin-left: 0;
+    width: 100%;
+    margin-right: 0;
+}
+.matter{
+    width: calc(100% - 40px);
+    margin-top: 10px;
+    padding: 20px;
+    padding-bottom: 30px;
+}
+.matter-foot-share{
+    width: 6rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0;
+}
+.matter-foot-share *{
+    vertical-align: middle;
+}
+.matter-foot-share span{
+    font-size: 1rem;
+}
+.Right{
+    display: none;
+}
+#articleTitle{
+    font-size: 18px;
+    line-height: 30px;
+}
+.matterTop{
+    margin-top: 10px;
+}
+.goodBox{
+    font-size: 0;
+    width: 6rem;
+    height: 2rem;
+    line-height: 2rem;
+}
+.goodBox *{
+    vertical-align: middle;
+}
+.good-Number{
+    font-size: 1rem;
+}
+.matter-foot img{
+    width: 20px;
+    height: 20px;
+}

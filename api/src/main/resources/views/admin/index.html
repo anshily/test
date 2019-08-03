@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../public/css/banner.css">
+    <!--<link rel="stylesheet" href="../../public/css/index.css">-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/layer.js"></script>
+    <!--<script type="text/javascript" src="../../public/js/banner_login_after.js"></script>-->
+    <!--<style>-->
+        <!--*{-->
+            <!--margin: 0;-->
+            <!--padding: 0;-->
+        <!--}-->
+        <!--.banner {-->
+            <!--background-color: white;-->
+            <!--width: 100%;-->
+            <!--height: 4rem;-->
+            <!--line-height: 4rem;-->
+            <!--font-size: 0.8rem;-->
+            <!--/*opacity: 0.5;*/-->
+        <!--}-->
+        <!--.banner .banner-logo{-->
+            <!--height: 4rem;-->
+        <!--}-->
+        <!--.banner-logo img{-->
+            <!--margin-left: 3rem;-->
+            <!--margin-top: 10px;-->
+            <!--/*float: left;*/-->
+            <!--height: 65%;-->
+            <!--object-fit: contain;-->
+        <!--}-->
+
+        <!--/*input:hover{*/-->
+        <!--/*background-color: #fff;*/-->
+        <!--/*}*/-->
+    <!--</style>-->
+</head>
+<body>
+
+<!--<div class="banner" id="banner_test">-->
+    <!--<div class="banner-logo"><a href='/'><img src="../../public/images/logo1.jpg"></a></div>-->
+<!--</div>-->
+
+<div class="topNavigation">
+    <a href='/'><img  class="logo" src="../../public/images/logo1.jpg"></a>
+</div>
+
+<span id="testregistor">ceshi</span>
+
+<div></div>
+
+<!--<input type="file" name="pic" accept="image/gif"/>-->
+
+<!--后台INDEX-->
+
+
+<!--<ul class="slideUl" style="margin-bottom: 0.3rem">-->
+    <!--<li class="modules" id="byTime">快讯</li>-->
+    <!--<li class="modules" id="byHot">热点</li>-->
+    <!--<li class="modules" id="project">项目</li>-->
+    <!--<li class="modules" id="community">社区</li>-->
+    <!--<li class="modules" id="meeting">会议</li>-->
+    <!--<li class="modules" id="policy">政策</li>-->
+    <!--<li class="modules" id="figure">人物</li>-->
+<!--</ul>-->
+</body>
+</html>
+<script>
+
+    // document.getElementById('').click()
+
+    $(function () {
+        $("#testregistor").click(function () {
+            $.ajax({
+                type : "POST",
+                data : {
+                    "username" : "admin",
+                    "password" : "admin"
+                    // "vcode" : code
+                },
+                dataType : "json",
+                url : "ajaxRegister",
+                success : function(result) {
+                    console.log(result);
+                    if (result.status != 200) {
+
+                        layer.msg(result.message)
+
+                    } else {
+                        layer.msg("注册成功正在跳转登陆页...");
+                        // setTimeout(function(){
+                        //     location.href = "/index";
+                        // }, 1000);
+                    }
+                }
+            });
+        })
+    })
+
+    $.ajax({
+        type : "POST",
+        data : {
+            "username" : "admin",
+            "password" : "admin"
+            // "vcode" : code
+        },
+        dataType : "json",
+        url : "ajaxRegister",
+        success : function(result) {
+            console.log(result);
+            if (result.status != 200) {
+
+                layer.msg(result.message)
+
+            } else {
+                layer.msg("注册成功正在跳转登陆页...");
+                // setTimeout(function(){
+                //     location.href = "/index";
+                // }, 1000);
+            }
+        }
+    });
+    // var banner = $("<div class='banner'></div>");
+    // var banner_logo = $("<div class='banner-logo'></div>");
+    // var banner_nav = $("<div class='banner-nav'></div>");
+    // var banner_nav_ul = $("<ul class='banner-nav-ul'></ul>");
+    // var banner_write = $("<div class='banner-write'></div>");
+    // var banner_login = $("<div class='banner-login'></div>");
+    //
+    // // var banner_nav_ul_li = $("<li></li>");
+    //
+    // var banner_nav_ul_list = [
+    //     {
+    //         name: '快讯',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '热点',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '项目',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '社区',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '会议',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '政策',
+    //         url: ''
+    //     },
+    //     {
+    //         name: '人物',
+    //         url: ''
+    //     }
+    // ];
+    //
+    // for (var i = 0; i < banner_nav_ul_list.length; i++){
+    //     banner_nav_ul.append($("<li><a href='"+banner_nav_ul_list[i].url+"'>"+banner_nav_ul_list[i].name+"</a></li>"))
+    // }
+    //
+    // banner_nav.append(banner_nav_ul);
+    //
+    // banner.append(banner_logo);
+    // banner.append(banner_nav);
+    // banner.append(banner_login);
+    // banner.append(banner_write);
+
+        // $(function () {
+        //     $("body").prepend(banner);
+        // })
+
+    function loginAfter() {
+
+        banner_css = $("<link rel=\"stylesheet\" href=\"../../public/css/banner.css\">\n" +
+            "    <link rel=\"stylesheet\" href=\"../../public/css/banner_small_mobile.css\" media=\"screen and (max-width:650px)\">")
+
+
+        // banner_css = $("    <link rel=\"stylesheet\" href=\"../../public/css/banner.css\">")
+        $("head").append(banner_css)
+
+        banner_login_after =
+            "<div class=\"topNavigation\">\n" +
+            "    <a href='/'><img  class=\"logo\" src=\"../../public/images/logo1.jpg\"></a>\n" +
+            "\n" +
+            "    <ul class=\"loginAndRegister\">\n" +
+            "        \n" +
+            "\n" +
+            "        <ul class=\"writebox\">\n" +
+            "            <li class=\"writeLi\"><img src='../../public/images/写文章.png'>写文章</li>\n" +
+            "        </ul>\n" +
+            "\n" +
+            "        <ul class=\"author-box\">\n" +
+            "            <li id=\"ishover\"><img id='topNavigationImg' src=\"../../public/imgs/user.png\"></li>\n" +
+            "            <li>\n" +
+            "                <ul class=\"author\" hidden>\n" +
+            "\n" +
+            "                    <li class=\"li1\">个人中心</li>\n" +
+            "                    <li class=\"li2\">我的文章</li>\n" +
+            // "                    <li class=\"li3\">消息中心</li>\n" +
+            "                    <li class=\"li4\">退出</li>\n" +
+            "                </ul>\n" +
+            "            </li>\n" +
+            "        </ul>\n" +
+            "\n" +
+            "</div>"
+
+        $("body").prepend(banner_login_after);
+
+
+
+
+        $(".li4").click(function () {
+            location.href = "/logout"
+        })
+
+        // $(".li3").click(function () {
+        //     location.href = "/message"
+        // })
+        $(".li2").click(function () {
+            location.href = "/personalArticle"
+        })
+
+        $(".li1").click(function () {
+            location.href = "/personalCenter"
+        })
+
+
+
+        $(".writeLi").click(function () {
+            location.href = "/article/writeArticle"
+        })
+
+        $(".author-box").hover(function(){
+            $(".author").slideDown();
+        },function(){
+            $(".author").hide();
+        });
+
+        $(document).on('click','#ishover',function (event) {
+            $(".author").slideDown();
+            event.stopPropagation();
+        })
+
+        $(document).on('click touchstart touchmove','html',function (event) {
+            $(".author").hide(500);
+            // event.stopPropagation();
+        })
+
+        $(document).on('click touchstart','#li4',function (event) {
+
+            location.href = "/logout"
+            // $(".author").hide(500);
+            // event.stopPropagation();
+        })
+
+        $(document).on('click touchstart','#li2',function (event) {
+
+            location.href = "/personalArticle"
+
+            // location.href = "/logout"
+            // $(".author").hide(500);
+            // event.stopPropagation();
+        })
+
+        // $(".author-box").on("touchstart",function (e) {
+        //     $(e.target()).css("color","#FFF")
+        // })
+
+        $(".li4").on("touchstart",function () {
+            location.href = "/logout"
+        })
+
+        $(".li2").on("touchstart",function () {
+            location.href = "/personalArticle"
+        })
+
+        $(".li1").on("touchstart",function () {
+            location.href = "/personalCenter"
+        })
+
+        $(document).on('click touchstart','#li1',function (event) {
+
+            location.href = "/personalCenter"
+
+            // location.href = "/logout"
+            // $(".author").hide(500);
+            // event.stopPropagation();
+        })
+
+    }
+
+    $(function () {
+        $(".topNavigation").remove();
+        loginAfter();
+    })
+
+</script>

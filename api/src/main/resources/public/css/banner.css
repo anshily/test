@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.topNavigation-bg {
+    position: relative;
+    padding: 0 10px 0;
+    height: 1rem;
+}
+
+.topNavigation {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    align-items: center;
+    height: 4rem;
+    /*background-color: #2C323E;*/
+}
+
+.login-register {
+    font-size: 14px;
+    display: flex;
+    position: absolute;
+    right: 0;
+    color: white;
+}
+
+.login-register span {
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.logo {
+    margin-top: 10px;
+    height: 3rem;
+    object-fit: contain;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    color: white;
+}
+
+.authorHeader img {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+}
+
+.writeArticle span {
+
+    margin-right: 15px;
+    padding: 1px 5px;
+    border: white solid 1px;
+    border-radius: 74px;
+    cursor: pointer;
+}
+
+.topNavigation {
+    /*max-width: 1500px;*/
+    position:relative;
+    /*position: sticky;*/
+    /*position: -webkit-sticky;*/
+    /*top: 0;*/
+    z-index: 10;
+    margin: auto;
+}
+.logo-box{
+    position: absolute;
+    left:0;
+}
+
+.banner-out{
+    width: 100%;
+    /*position: sticky;*/
+    /*position: -webkit-sticky;*/
+    /*top: 0;*/
+    z-index: 10;
+}
+
+@media screen and (max-width: 650px) {
+    .logo {
+        margin-left: 1rem;
+        margin-top: 2px;
+        height: 2rem;
+        object-fit: contain;
+    }
+
+    .login-register {
+        font-size: 14px;
+        display: flex;
+        position: absolute;
+        right: 1rem;
+        color: white;
+    }
+
+    .author {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        right: 0.6rem;
+        color: white;
+    }
+    .logo-box {
+        position: absolute;
+        left: 0;
+    }
+}

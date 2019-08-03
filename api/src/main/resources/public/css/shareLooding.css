@@ -1,0 +1,25 @@
+#shareElement{
+    display: none;
+    z-index: 11;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(125,125,125,0.5);
+}
+#lodingBox{
+    display: none;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 16px);
+}
+#shareImage{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 80%;
+}

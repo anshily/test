@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>h2</h2>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        console.log(" current is h2 ")
+    })
+    $(document).ready(function() {
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                window.location = "h3.html#h2"
+
+            });
+        }
+
+        window.history.pushState('forward', null, '#'); //在IE中必须得有这两行
+        window.history.forward(1);
+    });
+</script>

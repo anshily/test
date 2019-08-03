@@ -1,0 +1,43 @@
+.fl_main .comment li:first-child{
+    margin-left: 0;
+}
+.fl_main .comment li{
+    font-size: 10px;
+}
+.fl_main .comment li:nth-child(3):hover .social-share{
+    display: none;
+}
+.Left{
+    margin: 0;
+}
+.main-top-login{
+    font-size: 12px;
+}
+.main-top-title{
+    font-size: 12px;
+}
+.fl_main_content .title{
+    /*font-weight: bold;*/
+    display: block;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #2C323E;
+    letter-spacing: 1.5px;
+}
+.fl_main_content .detail {
+    font-size: 14px;
+    color: #5D5F62;
+    letter-spacing: 1.25px;
+    line-height: 20px;
+}
+.fl_main_content .detail>p{
+    line-height: 20px;
+    font-size: 14px;
+    word-break: normal;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* -webkit-line-clamp: 2; */
+    overflow: hidden;
+}

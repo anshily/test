@@ -1,0 +1,240 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 配置导航*/
+.banner-out{
+    background-color: #2C323E;
+}
+.topNavigation{
+    width: 80%;
+    margin: 0 auto;
+}
+.topNavigation-bg{
+    background-color: #F0F0F0;
+}
+.logo-box{
+    left:0;
+}
+.login-register{
+    right:.5rem;
+}
+
+body{
+    background-color: #F8F8F8;
+}
+/*@media screen and (max-width:650px){*/
+    /*.main{*/
+        /*width: 100%;*/
+    /*}*/
+    /*.shareLi:hover .social-share{*/
+        /*display: none;*/
+    /*}*/
+/*}*/
+
+.outmain{
+    width: 100%;
+    text-align: center;
+}
+.main{
+    display: inline-block;
+    position: relative;
+    width: 80%;
+    margin-top: 16px;
+}
+.main-title{
+    width: 100%;
+    position: relative;
+}
+.main-title:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 4px;
+    height: 50px;
+    background-color: #2C323E;
+}
+.main-top{
+    position: relative;
+    display: inline-block;
+    margin-left: 4px;
+    width: calc(100% - 4px);
+    height: 49px;
+    background-color: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    text-align: left;
+    /*border-left: 2px solid #2C323E;*/
+}
+.main-top::before{
+    position: absolute;
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    top: 46%;
+    margin-left: 16px;
+    background-color: #2C323E;
+}
+.main-top span{
+    letter-spacing: 1px;
+    line-height: 50px;
+    vertical-align: middle;
+}
+.main-top-title{
+    font-family: PingFangSC-Semibold;
+    margin-left: 32px;
+    color: #2C323E;
+}
+.main-top-login{
+    position: absolute;
+    right: 26px;
+    font-size: 14px;
+    font-family: PingFangSC-Semibold;
+    color: #1D3700;
+}
+.main-top-login a{
+    text-decoration: none;
+    color: #33CCFF;
+    cursor: pointer;
+}
+.main_content{
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #FFFFFF;
+    border:1px solid #EFEFEF  ;
+    height: 600px;
+    text-align: center;
+}
+.main-center{
+    width: 420px;
+    display: block;
+    margin:auto;
+    margin-top: 100px;
+}
+.inputBox{
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    margin: auto;
+    margin-bottom: 20px;
+    /*border:1px solid #E8E8E8 ;*/
+    border-bottom:1px solid #E8E8E8 ;
+}
+/*.inputBox-top{*/
+    /*margin-top: 100px;*/
+/*}*/
+.inputBox-verify{
+    border-bottom: 0;
+}
+.inputBox input{
+    display: inline-block;
+    width: 70%;
+    height: 50px;
+    border: 0;
+    outline: 0;
+    color: #888888;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    letter-spacing: 1px;
+}
+.checkAlert{
+    float: right;
+    line-height: 50px;
+    color: #FF0F0A;
+    font-size: 14px;
+}
+.inputBox .verify{
+    width: 60%;
+    border-bottom:1px solid #E8E8E8;
+}
+.inputBox::after{
+    color: #FF0F0A;
+    font-size: 14px;
+}
+.getVerify{
+    display: inline-block;
+    height: 42px;
+    width: 30%;
+    float: right;
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    background-color: #1992EF;
+    outline: 0;
+    cursor: pointer;
+}
+.regisButton{
+    display: block;
+    height: 50px;
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 1.33px;
+    background-color: #1992EF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    border:none;
+}
+.forgotPass{
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    margin: auto;
+}
+
+.img_unselect,.img_selected{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    /*border-radius: 100%;*/
+    /*border:1px solid #E8E8E8 ;*/
+
+    /*background-color: #1992EF;*/
+}
+.img_unselect{
+    background:url('../../public/imgs/hook_n@3x.png');
+    background-size: 100% 100%;
+}
+.img_selected{
+    background:url('../../public/imgs/hook_s.png');
+    background-size: 100% 100%;
+}
+.forgotPass span{
+    display: inline-block;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 1px;
+}
+.forgotPass a{
+    display: inline-block;
+    float: right;
+    text-decoration: none;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #888888;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+@media all and (max-width: 890px) {
+    .topNavigation{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+

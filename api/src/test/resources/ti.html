@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        img{
+            display: none;
+            width: 200px;
+            height: 500px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>出现</button>
+    <img src="">
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var img = document.getElementsByTagName("img")[0];
+
+    var b = document.getElementsByTagName("button")[0];
+    b.onclick = function (e) {
+        img.setAttribute("src","http://localhost:80/front/getImage?titles=asdasdad&contents=asdasdazxczxczxc");
+        img.style.display = "block";
+    };
+    var obj = {
+
+        titles:"aaaaaa",
+        contents:"bbbbbbbbbb",
+        // dateType:"json",
+
+    }
+        $.ajax({
+            url:"http://localhost:80/front/getImage",
+            data:obj,
+            success:function (data) {
+                // console.log(data);
+                // var reader = new FileReader();
+                // reader.readAsDataURL(data);
+                // reader.onload = function (ev) {
+                //     console.log(reader.result);
+                // }
+                img.setAttribute("src",data);
+                img.style.display = "block";
+            }
+
+    })
+
+</script>

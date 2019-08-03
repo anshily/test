@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../../public/css/index.css">
+    <link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/layer.js"></script>
+
+    <link rel="stylesheet" href="../../public/css/banner.css">
+    <link rel="stylesheet" href="../../public/js/share/share.min.css">
+    <script type="text/javascript" src="../../public/js/share/jquery.share.min.js"></script>
+
+
+    <!--<script type="text/javascript" src="../../public/js/banner_login_before.js"></script>-->
+
+
+    <style>
+
+        .container{
+            top: 1rem;
+            position: relative;
+            background-color: #F3F4F7;
+            width: 100%;
+            border-top: #E0E0E0 solid 1px;
+        }
+        .rside{
+            width: 25%;
+            position: absolute;
+            line-height: 3.5rem;
+            /*border: #E0E0E0 solid 1px;*/
+            /*background-color: #fff;*/
+            list-style: none;
+        }
+        .rside li{
+            /*position: relative;*/
+            /*width: 15rem;*/
+            height: 3.5rem;
+            width: 100%;
+            text-align: center;
+            border-left: #F3F4F7 solid 2px;
+        }
+        .rside li:hover{
+            border-left: #FF9D11 solid 2px;
+            color: #FF9D11;
+            background-color: #FFFFFF;
+        }
+
+        .container-info{
+            position: absolute;
+            right: 0px;
+            background-color: #FFFFFF;
+            height: 10rem;
+            width: 75%;
+            border-left: #E0E0E0 solid 1px;
+
+        }
+        .input-box{
+            list-style: none;
+        }
+        .input-li{
+            text-align:left;
+            padding-left: 5%;
+            border:solid 0.5px #D8D8D8;
+        }
+
+        .topNavigation-registerorlogin{
+            position: relative;
+
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!--<div class="topNavigation">-->
+    <!--<img class="logo" src="../../public/images/logo1.jpg">-->
+    <!--<ul class="loginAndRegister">-->
+
+<!--<div class="topNavigation-registerorlogin">-->
+    <!--&lt;!&ndash;登陆连接&ndash;&gt;-->
+    <!--<a href="/login" class="transitionA"><li>登陆</li></a>-->
+
+    <!--<li>|</li>-->
+
+    <!--&lt;!&ndash;注册链接&ndash;&gt;-->
+    <!--<a href="/regis" class="transitionA"><li>注册</li></a>-->
+<!--</div>-->
+
+
+        <!--<li class="writeLi">写文章</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+    <!--<div class="container">-->
+
+        <!--<ul class="rside">-->
+            <!--<li>个人中心</li>-->
+            <!--<li>我的文章</li>-->
+            <!--<li>消息中心</li>-->
+            <!--<li>绑定邮箱</li>-->
+            <!--&lt;!&ndash;<li>绑定手机</li>&ndash;&gt;-->
+            <!--<li>修改密码</li>-->
+        <!--</ul>-->
+
+        <!--<div class="container-info">-->
+
+            <!--<ul class="input-box">-->
+                <!--<li>用户ID： 10103</li>-->
+                <!--<li>昵称：<input type="text" class="input-li"></li>-->
+                <!--<li>姓名：<input type="text" class="input-li"></li>-->
+                <!--<li>生日：<input type="text" class="input-li"></li>-->
+                <!--<li>性别：<input type="radio" name="gender">-->
+                    <!--<input type="radio" name="gender">-->
+                <!--</li>-->
+                <!--<li>钱包地址：<input type="text"class="input-li"></li>-->
+                <!--<li>所在国家：<input type="text" class="input-li"></li>-->
+                <!--<li>所在行业：<input type="text" class="input-li"></li>-->
+                <!--<li>居住地：<input type="text" class="input-li"></li>-->
+                <!--<li><span>个人简介：</span><textarea rows="3" cols="20"></textarea></li>-->
+                <!--<li>提交</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+
+        <!--<form action="/sys/upHeaderImg" method="post" enctype="multipart/form-data">-->
+            <!--<input type="file" name="file" value="选择"/>-->
+            <!--<input id="submit_form" type="submit" value="保存"/>-->
+        <!--</form>-->
+
+<div>
+    <input type="file" id="files" style="display: none" onchange="fileImport();">
+    <input type="button" id="fileImport" value="导入">
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    //点击导入按钮,使files触发点击事件,然后完成读取文件的操作
+    $("#fileImport").click(function () {
+        $("#files").click();
+    })
+    function fileImport() {
+        //获取读取我文件的File对象
+        var selectedFile = document.getElementById('files').files[0];
+        var name = selectedFile.name;//读取选中文件的文件名
+        var size = selectedFile.size;//读取选中文件的大小
+        console.log("文件名:"+name+"大小:"+size);
+
+        var reader = new FileReader();//这是核心,读取操作就是由它完成.
+        reader.readAsBinaryString(selectedFile);
+        //reader.readAsText(selectedFile);//读取文件的内容,也可以读取文件的URL
+        reader.onload = function (file) {
+
+            var fileJSON = {
+                file: reader.result
+            };
+console.log(file);
+            $.ajax({
+                url: "/sys/picture",
+                // contentType: "application/json",
+                type: "post",
+                async: false,
+                // data: JSON.stringify(fileJSON),
+                data: fileJSON,
+                success: function (is) {
+                    if (is) {
+                        layer.msg("保存成功");
+                    } else {
+                        layer.msg("服务器错误，保存失败");
+                    }
+                }
+            })
+            //当读取完成后回调这个函数,然后此时文件的内容存储到了result中,直接操作即可
+            console.log(this.result);
+        }
+    }
+</script>
+
+
+
+</body>
+</html>

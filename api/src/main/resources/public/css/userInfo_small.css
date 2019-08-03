@@ -1,0 +1,32 @@
+.main{
+    width: 100%;
+    padding: 0;
+}
+.inputBox span:nth-child(1){
+    text-align: right;
+    width: 18%;
+}
+.inputBox{
+    font-size: 13px;
+    position: relative;
+}
+.user_head_pic{
+    position: relative;
+    font-size: 13px;
+}
+.user_head_pic span{
+    text-align: right;
+    width: 17%;
+}
+.imgBox,.saveButton{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.inputBox input{
+    font-size: 13px;
+    color: black;
+}

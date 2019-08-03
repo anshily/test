@@ -1,0 +1,73 @@
+.main{
+    width: 100%;
+}
+.rightBox{
+    display: none;
+}
+.leftBox{
+    width: 100%;
+    margin-left: 0;
+}
+.swiper-container{
+    width: 100%;
+    height: 200px;
+}
+.adImageBox{
+    display: none;
+    /*width: 31.5%;*/
+}
+.swiper-pagination-custom{
+    width: 100%;
+    text-align: center;
+    right: 0;
+}
+.swiper-pagination-customs{
+    /*display: none;*/
+    width: 20px;
+}
+.contentBox{
+    height: 7rem;
+}
+.lookSpan{
+    margin-right: 1rem;
+}
+.categoryUl{
+    display: flex;
+    justify-content: space-around;
+}
+.categoryUl li{
+    margin: auto;
+}
+.topNavigation-bg{
+    display: none;
+}
+.contentBrief{
+    width: 55%;
+}
+.contentBrief p{
+    display: none;
+}
+.main{
+    width: 100%;
+}
+.contentBox h2{
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.content p {
+    font-size: 0.6rem;
+}
+.artical-pic{
+    margin: 0 0.5rem 0 .5rem;
+    width: 37%;
+}
+.intro{
+    margin-left: 0;
+}
+.time{
+    width: 100%;
+}
